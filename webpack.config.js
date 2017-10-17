@@ -4,14 +4,12 @@ const env = process.env.NODE_ENV;
 module.exports = function(){
     switch(env){
         case 'development':
-        console.log(JSON.stringify(require('./config/webpack.dev')(env)),"config development")
             return require('./config/webpack.dev')(env)
             break;
         case 'test':
             return require('./config/webpack.test')(env)
             break;
         case 'production':
-        console.log(JSON.stringify(require('./config/webpack.prod')(env)),"config prod")
             return require('./config/webpack.prod')(env)
             break;
         default :

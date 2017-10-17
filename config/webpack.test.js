@@ -18,7 +18,7 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = function(env){
     return merge.strategy({
-        plugins: 'prepend'
+        plugins: 'prepend',
     })(base(env),{
         devtool: '#source-map',
         module:{
