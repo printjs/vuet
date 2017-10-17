@@ -1,41 +1,21 @@
-module.exports = {
-    entry: './src/main.ts',
-    output: {
-        path: __dirname,
-        filename: 'build.js'
-    },
-    resolve: {
-        extensions: ['.ts', '.js'],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-        }
-    },
-    module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                exclude: /node_modules|vue\/src/,
-                loader: 'awesome-typescript-loader',
-                options: {
-                    appendTsSuffixTo: [/\.vue$/]
-                }
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    esModule: true
-                }
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
-            },
-        ]
-    },
-    devtool: 'source-map'
+const env = process.env.NODE_ENV;
+
+
+module.exports = function(){
+    switch(env){
+        case 'development':
+        console.log(JSON.stringify(require('./config/webpack.dev')(env)),"config development")
+            return require('./config/webpack.dev')(env)
+            break;
+        case 'test':
+            return require('./config/webpack.test')(env)
+            break;
+        case 'production':
+        console.log(JSON.stringify(require('./config/webpack.prod')(env)),"config prod")
+            return require('./config/webpack.prod')(env)
+            break;
+        default :
+            console.log("错误的环境参数");
+            break;
+    }
 }

@@ -1,22 +1,22 @@
-import Component from 'vue-class-component'
-import Vue from 'vue'
+import Component from "vue-class-component";
+import Vue from "vue";
 
 
-import './g.scss'
+import "./g.scss";
 
-import {test} from './test'
+import { Test } from "./test";
 
 @Component({
-    name:'entry',
-    template:`
+    name: "entry",
+    template: `
         <div>
-            <h1>入口</h1>
+            <h1>入口</h1> 
             <p class="p">green</p>
             <test></test>
         </div>
     `,
-    components:{test}
+    components: { Test },
 })
-export class entry extends Vue{
+export class Entry extends Vue {
 
 }
