@@ -1,4 +1,5 @@
 {
+    "rulesDirectory": ["./src"],
     "rules": {
         "class-name": true,
         "comment-format": [
