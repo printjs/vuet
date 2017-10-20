@@ -40,8 +40,6 @@ module.exports = function (env) {
                             }
                         }
                     ],
-                    // 在开发环境使用 style-loader
-                    // fallback: "style-loader"
                 })
             }]
         },
