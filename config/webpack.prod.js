@@ -28,7 +28,10 @@ module.exports = function (env) {
                             options: {
                                 minimize: true,
                                 sourceMap: true,
-                                importLoaders: 2
+                                importLoaders: 2,
+                                module:true,
+                                importLoaders:1,
+                                localIdentName:"[name]__[local]___[hash:base64:5]",
                             }
                         },
                         {

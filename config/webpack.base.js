@@ -4,13 +4,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-console.log("process.env.NODE_ENV", process.env.NODE_ENV ,"base");
+console.log("process.env.NODE_ENV", process.env.NODE_ENV, "base");
 
 module.exports = function (env) {
     return {
         entry: './src/main.ts',
         output: {
-            path: path.resolve(__dirname,'../dist'),
+            path: path.resolve(__dirname, '../dist'),
             filename: 'build.[hash].js',
         },
         resolve: {
@@ -47,6 +47,11 @@ module.exports = function (env) {
                             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
                         }
                     }
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'raw-loader',
+                    exclude: [path.resolve(__dirname,'../index.html')]
                 }
             ]
         },
@@ -65,7 +70,7 @@ module.exports = function (env) {
         plugins: [
             new HtmlWebpackPlugin({
                 filename: 'index.html',
-                template: path.resolve(__dirname,'../index.html'),
+                template: path.resolve(__dirname, '../index.html'),
                 chunksSortMode: 'dependency',
             }),
             new webpack.DefinePlugin({
