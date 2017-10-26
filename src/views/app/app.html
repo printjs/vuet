@@ -2,4 +2,15 @@
     <h1>入口</h1>
     <p :class="styles.p">green</p>
     <test></test>
+    <slot-component>
+        <template slot-scope="scope">
+            <span>outter,{{scope}}</span>
+        </template>
+        <!-- <template slot="test" slot-scope="scope">
+            <span>{{scope}}</span>
+            <ul>
+                <li v-for="val in scope.list">{{val}}</li>
+            </ul>
+        </template> -->
+    </slot-component>
 </div>
