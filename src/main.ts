@@ -1,4 +1,7 @@
 import Vue from "vue";
+// import ElementUI  from "element-ui";
+const ElementUI = require("element-ui");
+
 import { Entry } from "./views/app/app";
 
 if (process.env.NODE_ENV === "test") {
@@ -6,6 +9,9 @@ if (process.env.NODE_ENV === "test") {
 } else if (process.env.NODE_ENV === "production") {
     console.log = function () { };
 }
+
+
+Vue.use(ElementUI);
 
 const app = new Vue({
     el: "#app",
