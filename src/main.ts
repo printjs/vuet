@@ -1,5 +1,4 @@
 import Vue from "vue";
-// import ElementUI  from "element-ui";
 const ElementUI = require("element-ui");
 
 import { Entry } from "./views/app/app";
