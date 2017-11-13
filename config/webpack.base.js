@@ -16,7 +16,10 @@ module.exports = function (env) {
         resolve: {
             extensions: ['.ts', '.js', '.vue', '.scss', '.json'],
             alias: {
+                'src': path.resolve(__dirname, '../src'),
                 'vue$': 'vue/dist/vue.esm.js',
+                '@views': 'src/views/',
+                '@components': 'src/components/'
             }
         },
         module: {
@@ -51,8 +54,12 @@ module.exports = function (env) {
                 {
                     test: /\.html$/,
                     loader: 'raw-loader',
-                    exclude: [path.resolve(__dirname,'../index.html')]
-                }
+                    exclude: [path.resolve(__dirname, '../index.html')]
+                },
+                {
+                    test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                    loader: 'url-loader?limit=8192&name=[path][name].[ext]'
+                },
             ]
         },
         devServer: {

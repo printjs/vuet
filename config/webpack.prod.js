@@ -11,48 +11,73 @@ const autoprefixer = require('autoprefixer');
 const base = require('./webpack.base');
 
 const extractSass = new ExtractTextPlugin({
+    allChunks: true,
     filename: "[name].[contenthash].css",
+    disable: process.env.NODE_ENV === "development"
+});
+const extractCss = new ExtractTextPlugin({
+    allChunks: true,
+    filename: "css.[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
 });
 
 module.exports = function (env) {
     return merge.strategy({
-        plugins: 'prepend'
+        plugins: 'prepend',
+        entry: 'replace',
     })(base(env), {
+        entry: {
+            entry: './src/main.ts',
+            vendor: ['vue', 'element-ui']
+        },
         module: {
             rules: [{
-                test: /\.scss$/,
-                use: extractSass.extract({
-                    use: [{
+                    test: /\.scss$/,
+                    use: extractSass.extract({
+                        use: [{
+                                loader: "css-loader",
+                                options: {
+                                    minimize: true,
+                                    sourceMap: true,
+                                    module: true,
+                                    localIdentName: "[name]__[local]___[hash:base64:5]",
+                                }
+                            },
+                            {
+                                loader: "sass-loader",
+                                options: {
+                                    outputStyle: 'expanded',
+                                    sourceMap: true,
+                                    sourceMapContents: true
+                                }
+                            }
+                        ],
+                    })
+                },
+                {
+                    test: /\.css$/,
+                    use: extractSass.extract({
+                        use: [{
                             loader: "css-loader",
                             options: {
                                 minimize: true,
                                 sourceMap: true,
-                                module:true,
-                                localIdentName:"[name]__[local]___[hash:base64:5]",
                             }
-                        },
-                        {
-                            loader: "sass-loader",
-                            options: {
-                                outputStyle: 'expanded',
-                                sourceMap: true,
-                                sourceMapContents: true
-                            }
-                        }
-                    ],
-                })
-            }]
+                        }],
+                    })
+                }
+            ]
         },
         plugins: [
             new CleanWebpackPlugin([
                 'dist',
             ], {
-                root: path.resolve(__dirname,'../'),
+                root: path.resolve(__dirname, '../'),
                 verbose: false,
-                watch:true
+                watch: true
             }),
             extractSass,
+            extractCss,
             // new CopyWebpackPlugin([{
             //         from: './src/assets/ip.svg',
             //         to: './src/assets/ip.svg'
@@ -82,6 +107,10 @@ module.exports = function (env) {
             }),
             new webpack.LoaderOptionsPlugin({
                 minimize: true
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor',
+                filename: 'vendor.bundle.js'
             })
         ]
     })
