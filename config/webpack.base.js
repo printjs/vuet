@@ -32,7 +32,7 @@ module.exports = function (env) {
                 {
                     test: /\.ts$/,
                     exclude: /node_modules|vue\/src/,
-                    loader: 'awesome-typescript-loader',
+                    loader: 'ts-loader',
                     options: {
                         appendTsSuffixTo: [/\.vue$/]
                     }

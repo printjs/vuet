@@ -5,6 +5,8 @@ const VueColor = require("vue-color");
 import { Btn } from "@components/button/button";
 import { Custom } from "@components/custom/custom";
 
+require("./app.styl");
+
 const defaultProps = {
     hex: "#194d33",
     hsl: {

@@ -10,7 +10,7 @@ const autoprefixer = require('autoprefixer');
 
 const base = require('./webpack.base');
 
-const extractSass = new ExtractTextPlugin({
+const extractStylus = new ExtractTextPlugin({
     allChunks: true,
     filename: "[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
@@ -33,18 +33,16 @@ module.exports = function (env) {
         module: {
             rules: [{
                     test: /\.scss$/,
-                    use: extractSass.extract({
+                    use: extractStylus.extract({
                         use: [{
                                 loader: "css-loader",
                                 options: {
                                     minimize: true,
                                     sourceMap: true,
-                                    module: true,
-                                    localIdentName: "[name]__[local]___[hash:base64:5]",
                                 }
                             },
                             {
-                                loader: "sass-loader",
+                                loader: "stylus-loader",
                                 options: {
                                     outputStyle: 'expanded',
                                     sourceMap: true,
@@ -56,7 +54,7 @@ module.exports = function (env) {
                 },
                 {
                     test: /\.css$/,
-                    use: extractSass.extract({
+                    use: extractCss.extract({
                         use: [{
                             loader: "css-loader",
                             options: {
@@ -76,7 +74,7 @@ module.exports = function (env) {
                 verbose: false,
                 watch: true
             }),
-            extractSass,
+            extractStylus,
             extractCss,
             // new CopyWebpackPlugin([{
             //         from: './src/assets/ip.svg',

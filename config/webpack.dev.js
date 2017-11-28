@@ -5,29 +5,47 @@ const autoprefixer = require('autoprefixer');
 const base = require('./webpack.base');
 
 
-module.exports = function(env){
-     return merge.smart(base(env),{     
-        module:{
-            rules:[
+module.exports = function (env) {
+    return merge.smart(base(env), {
+        module: {
+            rules: [
                 {
-                    test: /\.scss$/,
+                    test: /\.styl$/,
                     use: [{
-                            loader: 'style-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                        },
-                        {
-                            loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                        },
-                        {
+                            loader: 'style-loader'
+                        }, {
+                            loader: 'css-loader'
+                        }, {
                             loader: 'postcss-loader',
                             options: {
+                                sourceMap: true,
                                 plugins: () => [autoprefixer]
                             }
                         },
                         {
-                            loader: 'sass-loader'
+                            loader: 'stylus-loader',
                         }
-                    ],
+                    ]
                 },
+                // {
+                //     test: /\.scss$/,
+                //     use: [{
+                //             loader: 'style-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                //         },
+                //         {
+                //             loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                //         },
+                //         {
+                //             loader: 'postcss-loader',
+                //             options: {
+                //                 plugins: () => [autoprefixer]
+                //             }
+                //         },
+                //         {
+                //             loader: 'sass-loader'
+                //         }
+                //     ],
+                // },
                 {
                     test: /\.css$/,
                     use: [{
@@ -42,7 +60,7 @@ module.exports = function(env){
                                 plugins: () => [autoprefixer]
                             }
                         }
-                    ],                    
+                    ],
                 }
             ]
         }
