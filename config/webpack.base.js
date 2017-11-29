@@ -8,10 +8,10 @@ console.log("process.env.NODE_ENV", process.env.NODE_ENV, "base");
 
 module.exports = function (env) {
     return {
-        entry: './src/main.ts',
+        entry: './src/entry-client.ts',
         output: {
             path: path.resolve(__dirname, '../dist'),
-            filename: 'build.[hash].js',
+            filename: '[name].[hash].js',
         },
         resolve: {
             extensions: ['.ts', '.js', '.vue', '.scss', '.json'],
@@ -61,17 +61,6 @@ module.exports = function (env) {
                     loader: 'url-loader?limit=8192&name=[path][name].[ext]'
                 },
             ]
-        },
-        devServer: {
-            historyApiFallback: true,
-            noInfo: true,
-            proxy: {
-                "/intelligence": {
-                    target: "http://10.4.5.134",
-                    changeOrigin: true,
-                    secure: false
-                }
-            }
         },
         plugins: [
             new HtmlWebpackPlugin({

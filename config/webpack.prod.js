@@ -27,7 +27,7 @@ module.exports = function (env) {
         entry: 'replace',
     })(base(env), {
         entry: {
-            entry: './src/main.ts',
+            entry: './src/entry-client.ts',
             vendor: ['vue', 'element-ui']
         },
         module: {
@@ -105,10 +105,6 @@ module.exports = function (env) {
             }),
             new webpack.LoaderOptionsPlugin({
                 minimize: true
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                filename: 'vendor.bundle.js'
             })
         ]
     })

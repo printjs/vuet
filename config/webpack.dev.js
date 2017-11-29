@@ -7,6 +7,17 @@ const base = require('./webpack.base');
 
 module.exports = function (env) {
     return merge.smart(base(env), {
+        devServer: {
+            historyApiFallback: true,
+            noInfo: true,
+            proxy: {
+                "/intelligence": {
+                    target: "http://10.4.5.134",
+                    changeOrigin: true,
+                    secure: false
+                }
+            }
+        },
         devtool: 'cheap-module-eval-source-map',
         module: {
             rules: [
