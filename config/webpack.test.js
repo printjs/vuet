@@ -34,6 +34,12 @@ module.exports = function (env) {
                                     minimize: true,
                                     sourceMap: true,
                                 }
+                            },{
+                                loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: true,
+                                    plugins: () => [autoprefixer]
+                                }
                             },
                             {
                                 loader: "stylus-loader",
@@ -54,6 +60,12 @@ module.exports = function (env) {
                             options: {
                                 minimize: true,
                                 sourceMap: true,
+                            }
+                        },{
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins: () => [autoprefixer]
                             }
                         }],
                     })

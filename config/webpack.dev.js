@@ -8,8 +8,7 @@ const base = require('./webpack.base');
 module.exports = function (env) {
     return merge.smart(base(env), {
         devServer: {
-            historyApiFallback: true,
-            noInfo: true,
+            noInfo: false,
             proxy: {
                 "/intelligence": {
                     target: "http://10.4.5.134",

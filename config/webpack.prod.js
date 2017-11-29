@@ -32,13 +32,20 @@ module.exports = function (env) {
         },
         module: {
             rules: [{
-                    test: /\.scss$/,
+                    test: /\.styl$/,
                     use: extractStylus.extract({
                         use: [{
                                 loader: "css-loader",
                                 options: {
                                     minimize: true,
                                     sourceMap: true,
+                                }
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: true,
+                                    plugins: () => [autoprefixer]
                                 }
                             },
                             {
@@ -61,7 +68,13 @@ module.exports = function (env) {
                                 minimize: true,
                                 sourceMap: true,
                             }
-                        }],
+                        },{
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins: () => [autoprefixer]
+                            }
+                        },],
                     })
                 }
             ]
