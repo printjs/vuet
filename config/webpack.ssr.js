@@ -1,16 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-
-console.log("process.env.NODE_ENV", process.env.NODE_ENV, "base");
 
 module.exports = function (env) {
     return {
-        entry: './src/entry-client.ts',
         output: {
-            path: path.resolve(__dirname, '../dist'),
+            path: path.resolve(__dirname, '../build'),
             filename: '[name].[hash].js',
         },
         resolve: {
@@ -22,6 +18,7 @@ module.exports = function (env) {
                 '@components': 'src/components/'
             }
         },
+        devtool: '#source-map',
         module: {
             rules: [{
                     test: /\.ts$/,
@@ -56,14 +53,43 @@ module.exports = function (env) {
                     test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                     loader: 'url-loader?limit=8192&name=[path][name].[ext]'
                 },
+                {
+                    test: /\.styl$/,
+                    use: [{
+                            loader: 'style-loader'
+                        }, {
+                            loader: 'css-loader'
+                        }, {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins: () => [autoprefixer]
+                            }
+                        },
+                        {
+                            loader: 'stylus-loader',
+                        }
+                    ]
+                },
+                {
+                    test: /\.css$/,
+                    use: [{
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'css-loader'
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: () => [autoprefixer]
+                            }
+                        }
+                    ],
+                }
             ]
         },
         plugins: [
-            new HtmlWebpackPlugin({
-                filename: 'index.html',
-                template: path.resolve(__dirname, '../index.html'),
-                chunksSortMode: 'dependency',
-            }),
             new webpack.DefinePlugin({
                 'process.env': {
                     NODE_ENV: JSON.stringify(env)

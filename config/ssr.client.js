@@ -5,7 +5,7 @@ const path = require('path');
 
 
 
-const base = require('./webpack.prod')
+const base = require('./webpack.ssr')
 module.exports = function () {
     return merge.strategy({
         plugins: 'prepend',

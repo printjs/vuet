@@ -14,7 +14,10 @@ if (process.env.NODE_ENV === "test") {
 
 Vue.use(ElementUI);
 
-export const app = new Vue({
-    // el: "#app",
-    render: h => h(Entry)
-});
+export function createApp() {
+    const app = new Vue({
+        // el: "#app",
+        render: h => h(Entry)
+    });
+    return { app };
+}

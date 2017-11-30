@@ -1,4 +1,5 @@
-import { app } from "./main";
-  
+import { createApp } from "./main";
+
+const { app } = createApp();
 // 这里假定 App.vue 模板中根元素具有 `id="app"`
 app.$mount("#app");

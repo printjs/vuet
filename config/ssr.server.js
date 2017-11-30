@@ -5,7 +5,7 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const path = require('path');
 
 
-const base = require('./webpack.prod');
+const base = require('./webpack.ssr');
 
 module.exports = function (env) {
     return merge.strategy({
@@ -14,7 +14,6 @@ module.exports = function (env) {
     })(base('production'), {
         // 将 entry 指向应用程序的 server entry 文件
         entry: './src/entry-server.ts',
-        devtool: '#source-map',
         // 这允许 webpack 以 Node 适用方式(Node-appropriate fashion)处理动态导入(dynamic import)，
         // 并且还会在编译 Vue 组件时，
         // 告知 `vue-loader` 输送面向服务器代码(server-oriented code)。
