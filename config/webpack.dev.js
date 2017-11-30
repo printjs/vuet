@@ -38,25 +38,6 @@ module.exports = function (env) {
                         }
                     ]
                 },
-                // {
-                //     test: /\.scss$/,
-                //     use: [{
-                //             loader: 'style-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                //         },
-                //         {
-                //             loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                //         },
-                //         {
-                //             loader: 'postcss-loader',
-                //             options: {
-                //                 plugins: () => [autoprefixer]
-                //             }
-                //         },
-                //         {
-                //             loader: 'sass-loader'
-                //         }
-                //     ],
-                // },
                 {
                     test: /\.css$/,
                     use: [{
