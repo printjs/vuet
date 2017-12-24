@@ -10,32 +10,39 @@ const merge = require('webpack-merge');
 const base = require('./webpack.base');
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
+const extractStylus = new ExtractTextPlugin({
+    filename: "stylus.[name].[contenthash].css",
+    disable: process.env.NODE_ENV === "development"
+});
+const extractCss = new ExtractTextPlugin({
+    filename: "css.[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
 });
 
-
-module.exports = function(env){
+module.exports = function (env) {
     return merge.strategy({
         plugins: 'prepend',
-    })(base(env),{
+    })(base(env), {
         devtool: '#source-map',
-        module:{
-            rules:[
-                {
-                    test: /\.scss$/,
-                    use: extractSass.extract({
+        module: {
+            rules: [{
+                    test: /\.styl$/,
+                    use: extractStylus.extract({
                         use: [{
                                 loader: "css-loader",
                                 options: {
                                     minimize: true,
                                     sourceMap: true,
-                                    importLoaders: 2
+                                }
+                            },{
+                                loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: true,
+                                    plugins: () => [autoprefixer]
                                 }
                             },
                             {
-                                loader: "sass-loader",
+                                loader: "stylus-loader",
                                 options: {
                                     outputStyle: 'expanded',
                                     sourceMap: true,
@@ -44,18 +51,37 @@ module.exports = function(env){
                             }
                         ],
                     })
+                },
+                {
+                    test: /\.css$/,
+                    use: extractCss.extract({
+                        use: [{
+                            loader: "css-loader",
+                            options: {
+                                minimize: true,
+                                sourceMap: true,
+                            }
+                        },{
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins: () => [autoprefixer]
+                            }
+                        }],
+                    })
                 }
             ]
         },
-        plugins:[
+        plugins: [
             new CleanWebpackPlugin([
                 'dist',
             ], {
-                root: path.resolve(__dirname,'../'),
+                root: path.resolve(__dirname, '../'),
                 verbose: false,
-                watch:true
+                watch: true
             }),
-            extractSass,
+            extractStylus,
+            extractCss,
             // new CopyWebpackPlugin([{
             //         from: './src/assets/ip.svg',
             //         to: './src/assets/ip.svg'

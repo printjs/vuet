@@ -6,19 +6,23 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --watch",
     "prod": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "test": "cross-env NODE_ENV=test webpack --progress --hide-modules"
+    "test": "cross-env NODE_ENV=test webpack --progress --hide-modules",
+    "ssr:client": "cross-env NODE_ENV=ssr:client webpack --progress --hide-modules",
+    "ssr:server": "cross-env NODE_ENV=ssr:server webpack --progress --hide-modules"
   },
   "author": "wjt",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^8.0.34",
-    "vue": "^2.5.0",
+    "vuex": "^3.0.1",
+    "element-ui": "^2.0.1",
+    "fastify": "^0.35.2",
+    "vue": "^2.5.9",
     "vue-class-component": "^6.0.0",
-    "vuex": "^3.0.1"
+    "vue-server-renderer": "^2.5.9"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
-    "awesome-typescript-loader": "^3.2.3",
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.1.1",
     "cross-env": "^5.0.5",
@@ -26,10 +30,12 @@
     "extract-text-webpack-plugin": "^3.0.1",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.8",
-    "sass-loader": "^6.0.6",
+    "raw-loader": "^0.5.1",
     "style-loader": "^0.19.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "ts-loader": "^3.1.1",
     "tslint": "^5.7.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.5.3",
@@ -39,6 +45,7 @@
     "vue-template-compiler": "^2.5.3",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.2",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }
