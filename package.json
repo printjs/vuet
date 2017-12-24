@@ -13,7 +13,8 @@
   "dependencies": {
     "@types/node": "^8.0.34",
     "vue": "^2.5.0",
-    "vue-class-component": "^6.0.0"
+    "vue-class-component": "^6.0.0",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -35,6 +36,7 @@
     "url-loader": "^0.6.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.3",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.2",
     "webpack-merge": "^4.1.0"
