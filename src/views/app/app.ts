@@ -13,7 +13,7 @@ require("./app.styl");
         Btn, Custom
     },
     methods: {
-        updateValue(color) {
+        updateValue(color: string) {
             console.log(color);
         }
     },
