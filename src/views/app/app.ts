@@ -12,12 +12,16 @@ require("./app.styl");
     components: {
         Btn, Custom
     },
-    methods: {
-        updateValue(color: string) {
-            console.log(color);
-        }
-    },
     template: require("./app.html"),
 })
 export class Entry extends Vue {
+    public count: number = 1;
+
+    color(color: string) {
+        return color;
+    }
+
+    updateValue() {
+        this.count++;
+    }
 }

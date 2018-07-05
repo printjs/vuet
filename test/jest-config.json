@@ -1,0 +1,20 @@
+{
+    "moduleFileExtensions": ["ts", "js"],
+    "rootDir": "../",
+    "testRegex": ".spec.ts$",
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest",
+        "^.+\\.html?$": "<rootDir>/test/html.tranform.js",
+        "^.+\\.styl$":"<rootDir>/test/stylus.tranform.js"
+    },
+    "globals": {
+        "ts-jest": {
+            "tsConfigFile": "tsconfig.json"
+        }
+    },
+    "moduleNameMapper": {
+        "^@components/(.*)$": "<rootDir>/src/components/$1.ts",
+        "^@views/(.*)$": "<rootDir>/src/views/$1.ts"
+    },
+    "transformIgnorePatterns": ["/node_modules/", "/^.+\\.styl$/"]
+}
