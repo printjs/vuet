@@ -17,7 +17,8 @@ const config: webpack.Configuration = {
             "src": join(__dirname, "src"),
             "vue$": "vue/dist/vue.esm.js",
             "@views": "src/views/",
-            "@components": "src/components/"
+            "@components": "src/components/",
+            "@utils": "src/utils/"
         }
     },
     module: {

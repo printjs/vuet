@@ -14,7 +14,8 @@
     },
     "moduleNameMapper": {
         "^@components/(.*)$": "<rootDir>/src/components/$1.ts",
-        "^@views/(.*)$": "<rootDir>/src/views/$1.ts"
+        "^@views/(.*)$": "<rootDir>/src/views/$1.ts",
+        "^@utils/(.*)$": "<rootDir>/src/utils/$1.ts"
     },
-    "transformIgnorePatterns": ["/node_modules/", "/^.+\\.styl$/"]
+    "transformIgnorePatterns": ["/node_modules/"]
 }

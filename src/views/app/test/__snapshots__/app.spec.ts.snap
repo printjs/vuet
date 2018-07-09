@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.component.ts has the expected html structure 1`] = `
+<div>
+  <h1>
+    vuet1
+  </h1>
+   
+  <div>
+    <button
+      class="el-button el-button--default"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        默认按钮
+      </span>
+    </button>
+     
+    <button
+      class="el-button el-button--primary"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        主要按钮
+      </span>
+    </button>
+     
+    <button
+      class="el-button el-button--success"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        成功按钮
+      </span>
+    </button>
+     
+    <button
+      class="el-button el-button--info"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        信息按钮
+      </span>
+    </button>
+     
+    <button
+      class="el-button el-button--warning"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        警告按钮
+      </span>
+    </button>
+     
+    <button
+      class="el-button el-button--danger"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        危险按钮
+      </span>
+    </button>
+  </div>
+   
+  <button
+    class="el-button el-button--default"
+    type="button"
+  >
+    <!---->
+    <!---->
+    <span>
+      默认按钮
+    </span>
+  </button>
+</div>
+`;

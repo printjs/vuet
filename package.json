@@ -11,6 +11,7 @@
   "author": "wjt",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.4.3",
     "vue": "^2.5.9",
     "vue-class-component": "^6.2.0",
