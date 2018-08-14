@@ -8,7 +8,6 @@ module.exports = {
         stylus(src)
             .render(function (err, css) {
                 cssval = css;
-                console.log(css);
             });
         return "module.exports = " + JSON.stringify(cssval) + ";";
     },
