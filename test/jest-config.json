@@ -5,7 +5,8 @@
     "transform": {
         "^.+\\.(t|j)s$": "ts-jest",
         "^.+\\.html?$": "<rootDir>/test/html.tranform.js",
-        "^.+\\.styl$":"<rootDir>/test/stylus.tranform.js"
+        "^.+\\.styl$":"<rootDir>/test/stylus.tranform.js",
+        "^.+\\.css?$": "<rootDir>/test/css.tranform.js"
     },
     "globals": {
         "ts-jest": {
@@ -17,5 +18,7 @@
         "^@views/(.*)$": "<rootDir>/src/views/$1.ts",
         "^@utils/(.*)$": "<rootDir>/src/utils/$1.ts"
     },
-    "transformIgnorePatterns": ["/node_modules/"]
+    "transformIgnorePatterns": [
+        "<rootDir>/node_modules/(?!(element-ui)/)"
+    ]
 }

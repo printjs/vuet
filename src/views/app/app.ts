@@ -5,7 +5,7 @@ import { Btn } from "@components/button/button";
 import { Custom } from "@components/custom/custom";
 
 require("./app.styl");
-
+require("element-ui/lib/theme-chalk/index.css");
 
 @Component({
     name: "entry",
