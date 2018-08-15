@@ -1,7 +1,7 @@
 import webpack from "webpack";
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-import config from "webpack.config";
+import config from "./webpack.config";
 
 const prod: webpack.Configuration = (<any>Object).assign({}, config, {
     mode: process.env.NODE_ENV,
